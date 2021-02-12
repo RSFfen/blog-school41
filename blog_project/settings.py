@@ -26,7 +26,7 @@ SECRET_KEY = '7f3&qc#mgne*r@2oz8l^@drn-*k+b&kp6(-^(4n9)vahw5d@tn'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [*] # RSF
+ALLOWED_HOSTS = ['*'] # RSF
 
 
 # Application definition
