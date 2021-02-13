@@ -32,20 +32,21 @@ ALLOWED_HOSTS = ['*'] # RSF
 # Application definition
 
 INSTALLED_APPS = [
+    'blog.apps.BlogConfig',
+    'accounts.apps.AccountsConfig', # new
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'whitenoise.runserver_nostatic’, # RSF
     'django.contrib.staticfiles',
-    'blog.apps.BlogConfig',
-    'accounts.apps.AccountsConfig', # new
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware', # RSF
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware', # new!
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -122,23 +123,12 @@ USE_TZ = True
 #STATIC_URL = '/static/' # RSF
 #STATICFILES_DIRS = [str(BASE_DIR.joinpath('static'))] # RSF
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # добавить!
+STATIC_URL = '/static/’
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+# STATICFILES_DIRS = [os.path.join(BASE_DIR, "static"), '/app/static/',]
+STATICFILES_STORAGE =   'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.11/howto/static-files/
-#PROJECT_ROOT   =   os.path.join(os.path.abspath(__file__))
-#STATIC_ROOT  =   os.path.join(PROJECT_ROOT, 'staticfiles')
-#STATIC_URL = '/static/'
-
-# Extra lookup directories for collectstatic to find static files
-#STATICFILES_DIRS = ( os.path.join(PROJECT_ROOT, 'static'),)
-
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"), '/app/static/', 
-]
-
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 LOGIN_REDIRECT_URL = 'home' # new
 LOGOUT_REDIRECT_URL = 'home' # new
