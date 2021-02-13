@@ -124,7 +124,7 @@ USE_TZ = True
 #STATICFILES_DIRS = [str(BASE_DIR.joinpath('static'))] # RSF
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') # добавить!
-STATIC_URL = '/static/’
+STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 # STATICFILES_DIRS = [os.path.join(BASE_DIR, "static"), '/app/static/',]
 STATICFILES_STORAGE =   'whitenoise.storage.CompressedManifestStaticFilesStorage'
